@@ -3,6 +3,7 @@
 ## List of solved problems
 
 * [#1 Two Sum](#two-sum)
+* [#7 Reverse Integer](#reverse-integer)
 
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
 **Problem description**:
@@ -33,3 +34,32 @@ public int[] twoSum(int[] nums, int target) {
 
 **Source code**:
 [twoSum.java](source/twoSum.java)
+
+## [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
+**Problem description**:
+
+Reverse digits of an integer.
+
+**Example1:** x = 123, return 321
+
+**Example2:** x = -123, return -321
+
+**Detail**:
+
+Time Complexity： O(n!)
+```
+public int reverse(int x) {
+	long result = 0;
+	int y = x;
+	while(x != 0) {
+		result = result * 10 + x % 10;
+		x /= 10;
+		if(result > Integer.MAX_VALUE || result < Integer.MIN_VALUE)
+			return 0;
+	}
+	return (int)result;
+}
+```
+
+**Source code**:
+[reverseInteger.java](source/reverseInteger.java)
