@@ -63,3 +63,31 @@ public int reverse(int x) {
 
 **Source code**:
 [reverseInteger.java](source/reverseInteger.java)
+
+## [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
+**Problem description**:
+
+Determine whether an integer is a palindrome. Do this without extra space.
+
+**Detail**:
+
+Time Complexity： O(n/2)
+```
+public boolean isPalindrome(int x) {
+	if (x < 0)
+	    return false;
+	String str = String.valueOf(x);
+	int i;
+	int j = str.length() - 1;
+	for(i = 0; i < str.length() / 2; i++) {
+	    if(str.charAt(i) != str.charAt(j))
+		return false;
+	    else
+		j--;
+	}
+	return true;
+}
+```
+
+**Source code**:
+[palindromeNumber.java](source/palindromeNumber.java)
