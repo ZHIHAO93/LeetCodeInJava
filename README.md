@@ -4,6 +4,7 @@
 
 * [#1 Two Sum](#two-sum)
 * [#7 Reverse Integer](#reverse-integer)
+* [#9 Palindrome Number](#palindrome-number)
 
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
 **Problem description**:
