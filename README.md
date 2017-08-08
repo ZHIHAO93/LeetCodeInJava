@@ -5,6 +5,7 @@
 * [#1 Two Sum](#two-sum)
 * [#7 Reverse Integer](#reverse-integer)
 * [#9 Palindrome Number](#palindrome-number)
+* [#13 romanToInt](#roman-to-integer)
 
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
 **Problem description**:
@@ -92,3 +93,55 @@ public boolean isPalindrome(int x) {
 
 **Source code**:
 [palindromeNumber.java](source/palindromeNumber.java)
+
+## [Roman To Integer](https://leetcode.com/problems/roman-to-integer/description/)
+**Problem description**:
+
+Given a roman numeral, convert it to an integer.
+
+Input is guaranteed to be within the range from 1 to 3999.
+
+**Detail**:
+
+Time Complexity： O(n)
+```
+public int romanToInt(String s) {
+	int length = s.length();
+	int result = 0;
+	int n = 0, m = 0;
+	for (int i = length - 1; i >= 0; i--) {
+		m = n;
+		switch (s.charAt(i)) {
+		case 'I':
+			n = 1;
+			break;
+		case 'V':
+			n = 5;
+			break;
+		case 'X':
+			n = 10;
+			break;
+		case 'L':
+			n = 50;
+			break;
+		case 'C':
+			n = 100;
+			break;
+		case 'D':
+			n = 500;
+			break;
+		case 'M':
+			n = 1000;
+			break;
+		default:
+			break;
+		}
+			
+		result = (m <= n)? result + n : result - n;
+	}
+	return result;
+}
+```
+
+**Source code**:
+[romanToInt.java](source/romanToInt.java)
