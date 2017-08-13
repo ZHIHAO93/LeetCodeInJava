@@ -36,7 +36,7 @@ public int[] twoSum(int[] nums, int target) {
 ```
 
 **Source code**:
-[twoSum.java](source/twoSum.java)
+[twoSum.java](src/leetCode/TwoSum.java)
 
 ## [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
 **Problem description**:
@@ -65,7 +65,7 @@ public int reverse(int x) {
 ```
 
 **Source code**:
-[reverseInteger.java](source/reverseInteger.java)
+[reverseInteger.java](src/leetCode/ReverseInteger.java)
 
 ## [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
 **Problem description**:
@@ -93,7 +93,7 @@ public boolean isPalindrome(int x) {
 ```
 
 **Source code**:
-[palindromeNumber.java](source/palindromeNumber.java)
+[palindromeNumber.java](src/leetCode/PalindromeNumber.java)
 
 ## [Roman To Integer](https://leetcode.com/problems/roman-to-integer/description/)
 **Problem description**:
@@ -145,7 +145,7 @@ public int romanToInt(String s) {
 ```
 
 **Source code**:
-[romanToInt.java](source/romanToInt.java)
+[romanToInt.java](src/leetCode/RomanToInt.java)
 
 ## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 **Problem description**:
@@ -180,4 +180,4 @@ public int removeDuplicates(int[] nums) {
 ```
 
 **Source code**:
-[RemoveDuplicatesFromSortedArray.java](source/RemoveDuplicatesFromSortedArray.java)
+[RemoveDuplicatesFromSortedArray.java](src/leetCode/RemoveDuplicatesFromSortedArray.java)
