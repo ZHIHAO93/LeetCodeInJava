@@ -4,6 +4,7 @@
 
 * [#1 Two Sum](#two-sum)
 * [#2 Add Two Numbers](#add-two-numbers)
+* [#3 Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
 * [#7 Reverse Integer](#reverse-integer)
 * [#9 Palindrome Number](#palindrome-number)
 * [#13 Roman To Integer](#roman-to-integer)
@@ -86,6 +87,45 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
 **Source code**:
 [AddTwoNumbers.java](src/leetCode/AddTwoNumbers.java)
+
+## [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+**Problem description**:
+
+Given a string, find the length of the longest substring without repeating characters.
+
+**Examples:**
+
+Given **"abcabcbb"**, the answer is **"abc"**, which the length is 3.
+
+Given **"bbbbb"**, the answer is **"b"**, with the length of 1.
+
+Given **"pwwkew"**, the answer is **"wke"**, with the length of 3. Note that the answer must be a substring, **"pwke"** is a subsequence and not a substring.
+
+**Detail**:
+
+Time Complexity： O(n) n equal to length of String
+```
+public int lengthOfLongestSubstring(String s) {
+	char[] arr = s.toCharArray();
+	TreeMap<Character, Integer> tree = new TreeMap<Character, Integer>();
+	int pos = 0;
+	int sol = 0;
+	for(int i = 0; i < arr.length; i++) {
+		char c = arr[i];
+		if(tree.containsKey(c) && tree.get(c) >= pos) {
+			if(i - pos > sol) sol = i - pos;
+			pos = tree.get(c) + 1;
+		}
+		tree.put(c, i);
+	}
+	
+	if(arr.length - pos > sol) sol = arr.length - pos;
+    return sol;
+}
+```
+
+**Source code**:
+[LongestSubstringWithoutRepeatingCharacters.java](src/leetCode/LongestSubstringWithoutRepeatingCharacters.java)
 
 ## [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
 **Problem description**:
