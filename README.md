@@ -3,6 +3,7 @@
 ## List of solved problems
 
 * [#1 Two Sum](#two-sum)
+* [#2 Add Two Numbers](#add-two-numbers)
 * [#7 Reverse Integer](#reverse-integer)
 * [#9 Palindrome Number](#palindrome-number)
 * [#13 Roman To Integer](#roman-to-integer)
@@ -38,6 +39,53 @@ public int[] twoSum(int[] nums, int target) {
 
 **Source code**:
 [TwoSum.java](src/leetCode/TwoSum.java)
+
+## [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
+**Problem description**:
+
+You are given two **non-empty** linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+**Input:** (2 -> 4 -> 3) + (5 -> 6 -> 4)
+**Output:** 7 -> 0 -> 8
+
+**Detail**:
+
+Time Complexity： O(n) n equal to longer length of l1 and l2
+```
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+	ListNode tmp = new ListNode(0);
+	ListNode result = tmp;
+	int n = 0;
+	int sum;
+	while(l1 != null || l2 != null) {
+	    if(l1 != null && l2 != null) {
+	    	sum = l1.val + l2.val + n;
+	    } else if (l1 != null) {
+	    	sum = l1.val + n;
+	    } else {
+	    	sum = l2.val + n;
+	    }
+	    
+	    if(sum >= 10) n = sum / 10;
+	    else n = 0;
+	    
+	    tmp.next = new ListNode(sum % 10);
+	    tmp = tmp.next;
+	    if(l1 != null) l1 = l1.next;
+	    if(l2 != null) l2 = l2.next;
+	}
+	
+	if(n > 0)
+		tmp.next = new ListNode(n);
+	
+	return result.next;
+}
+```
+
+**Source code**:
+[AddTwoNumbers.java](src/leetCode/AddTwoNumbers.java)
 
 ## [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
 **Problem description**:
@@ -184,7 +232,7 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 ```
 
 **Source code**:
-[RemoveDuplicatesFromSortedArray.java](src/leetCode/MergeTwoSortedList.java)
+[MergeTwoSortedList.java](src/leetCode/MergeTwoSortedList.java)
 
 ## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 **Problem description**:

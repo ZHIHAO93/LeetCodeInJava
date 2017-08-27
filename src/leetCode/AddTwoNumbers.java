@@ -1,29 +1,33 @@
 package leetCode;
 
-public class MergeTwoSortedList {
+public class AddTwoNumbers {
 	
-	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		ListNode tmp = new ListNode(0);
 		ListNode result = tmp;
+		int n = 0;
+		int sum;
 		while(l1 != null || l2 != null) {
 		    if(l1 != null && l2 != null) {
-		    	if(l1.val > l2.val) {
-		    		tmp.next = new ListNode(l2.val);
-		    		l2 = l2.next;
-		    	}
-		    	else {
-		    		tmp.next = new ListNode(l1.val);
-		    		l1 = l1.next;
-		    	}
+		    	sum = l1.val + l2.val + n;
 		    } else if (l1 != null) {
-		    	tmp.next = new ListNode(l1.val);
-		    	l1 = l1.next;
+		    	sum = l1.val + n;
 		    } else {
-				tmp.next = new ListNode(l2.val);
-				l2 = l2.next;
+		    	sum = l2.val + n;
 		    }
+		    
+		    if(sum >= 10) n = sum / 10;
+		    else n = 0;
+		    
+		    tmp.next = new ListNode(sum % 10);
 		    tmp = tmp.next;
+		    if(l1 != null) l1 = l1.next;
+		    if(l2 != null) l2 = l2.next;
 		}
+		
+		if(n > 0)
+			tmp.next = new ListNode(n);
+		
 		return result.next;
 	}
 	
@@ -52,10 +56,10 @@ public class MergeTwoSortedList {
         int[] nodeValues = stringToIntegerArray(input);
     
         // Now convert that list into linked list
-        ListNode dummyRoot = new MergeTwoSortedList().new ListNode(0);
+        ListNode dummyRoot = new AddTwoNumbers().new ListNode(0);
         ListNode ptr = dummyRoot;
         for(int item : nodeValues) {
-            ptr.next = new MergeTwoSortedList().new ListNode(item);
+            ptr.next = new AddTwoNumbers().new ListNode(item);
             ptr = ptr.next;
         }
         return dummyRoot.next;
@@ -71,13 +75,13 @@ public class MergeTwoSortedList {
     }
     
     public static void main(String[] args){
-        String list1 = "[1, 3, 5, 7]";
-        String list2 = "[2, 4, 6]";
+        String list1 = "[2, 4, 3]";
+        String list2 = "[5, 6, 4]";
         
         ListNode l1 = stringToListNode(list1);
         ListNode l2 = stringToListNode(list2);
         
-        ListNode ret = new MergeTwoSortedList().mergeTwoLists(l1, l2);
+        ListNode ret = new AddTwoNumbers().addTwoNumbers(l1, l2);
         
         String out = listNodeToString(ret);
         
