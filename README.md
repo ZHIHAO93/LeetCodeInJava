@@ -6,6 +6,7 @@
 * [#7 Reverse Integer](#reverse-integer)
 * [#9 Palindrome Number](#palindrome-number)
 * [#13 Roman To Integer](#roman-to-integer)
+* [#26 Merge Two Sorted Lists](#merge-two-sorted-lists)
 * [#26 Remove Duplicates from Sorted Array](#remove-duplicates-from-sorted-array)
 
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
@@ -146,6 +147,44 @@ public int romanToInt(String s) {
 
 **Source code**:
 [RomanToInt.java](src/leetCode/RomanToInt.java)
+
+## [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
+**Problem description**:
+
+Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+
+**Detail**:
+
+Time Complexity： O(n) n equal to the sum of the length of l1 and l2.
+```    
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+	ListNode tmp = new ListNode(0);
+	ListNode result = tmp;
+    while(l1 != null || l2 != null) {
+        if(l1 != null && l2 != null) {
+        	if(l1.val > l2.val) {
+        		tmp.next = new ListNode(l2.val);
+        		l2 = l2.next;
+        	}
+        	else {
+        		tmp.next = new ListNode(l1.val);
+        		l1 = l1.next;
+        	}
+        } else if (l1 != null) {
+            tmp.next = new ListNode(l1.val);
+            l1 = l1.next;
+        } else {
+            tmp.next = new ListNode(l2.val);
+            l2 = l2.next;
+        }
+        tmp = tmp.next;
+    }
+    return result.next;
+}
+```
+
+**Source code**:
+[RemoveDuplicatesFromSortedArray.java](src/leetCode/MergeTwoSortedList.java)
 
 ## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 **Problem description**:
