@@ -6,7 +6,7 @@
 * [#7 Reverse Integer](#reverse-integer)
 * [#9 Palindrome Number](#palindrome-number)
 * [#13 Roman To Integer](#roman-to-integer)
-* [#26 Merge Two Sorted Lists](#merge-two-sorted-lists)
+* [#21 Merge Two Sorted Lists](#merge-two-sorted-lists)
 * [#26 Remove Duplicates from Sorted Array](#remove-duplicates-from-sorted-array)
 
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
@@ -160,25 +160,25 @@ Time Complexity： O(n) n equal to the sum of the length of l1 and l2.
 public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 	ListNode tmp = new ListNode(0);
 	ListNode result = tmp;
-    while(l1 != null || l2 != null) {
-        if(l1 != null && l2 != null) {
-        	if(l1.val > l2.val) {
-        		tmp.next = new ListNode(l2.val);
-        		l2 = l2.next;
-        	}
-        	else {
-        		tmp.next = new ListNode(l1.val);
-        		l1 = l1.next;
-        	}
-        } else if (l1 != null) {
-            tmp.next = new ListNode(l1.val);
-            l1 = l1.next;
-        } else {
-            tmp.next = new ListNode(l2.val);
-            l2 = l2.next;
-        }
-        tmp = tmp.next;
-    }
+	while(l1 != null || l2 != null) {
+		if(l1 != null && l2 != null) {
+			if(l1.val > l2.val) {
+				tmp.next = new ListNode(l2.val);
+				l2 = l2.next;
+			}
+			else {
+				tmp.next = new ListNode(l1.val);
+				l1 = l1.next;
+			}
+		} else if (l1 != null) {
+		    tmp.next = new ListNode(l1.val);
+		    l1 = l1.next;
+		} else {
+		    tmp.next = new ListNode(l2.val);
+		    l2 = l2.next;
+		}
+		tmp = tmp.next;
+	}
     return result.next;
 }
 ```
