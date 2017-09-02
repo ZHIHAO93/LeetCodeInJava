@@ -2,16 +2,17 @@
 
 ## List of solved problems
 
-* [#1 Two Sum](#two-sum)
-* [#2 Add Two Numbers](#add-two-numbers)
-* [#3 Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
-* [#7 Reverse Integer](#reverse-integer)
-* [#9 Palindrome Number](#palindrome-number)
-* [#13 Roman To Integer](#roman-to-integer)
-* [#21 Merge Two Sorted Lists](#merge-two-sorted-lists)
-* [#26 Remove Duplicates from Sorted Array](#remove-duplicates-from-sorted-array)
+* [#1 Two Sum](#1-two-sum)
+* [#2 Add Two Numbers](#2-add-two-numbers)
+* [#3 Longest Substring Without Repeating Characters](#3-longest-substring-without-repeating-characters)
+* [#4 Median of Two Sorted Arrays](#4-median-of-two-sorted-arrays)
+* [#7 Reverse Integer](#7-reverse-integer)
+* [#9 Palindrome Number](#9-palindrome-number)
+* [#13 Roman To Integer](#13-roman-to-integer)
+* [#21 Merge Two Sorted Lists](#21-merge-two-sorted-lists)
+* [#26 Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
 
-## [Two Sum](https://leetcode.com/problems/two-sum/description/)
+## [#1 Two Sum](https://leetcode.com/problems/two-sum/description/)
 **Problem description**:
 
 Given an array of integers, return **indices** of the two numbers such that they add up to a specific target.
@@ -41,7 +42,7 @@ public int[] twoSum(int[] nums, int target) {
 **Source code**:
 [TwoSum.java](src/leetCode/TwoSum.java)
 
-## [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
+## [#2 Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
 **Problem description**:
 
 You are given two **non-empty** linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
@@ -88,7 +89,7 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 **Source code**:
 [AddTwoNumbers.java](src/leetCode/AddTwoNumbers.java)
 
-## [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+## [#3 Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 **Problem description**:
 
 Given a string, find the length of the longest substring without repeating characters.
@@ -127,7 +128,78 @@ public int lengthOfLongestSubstring(String s) {
 **Source code**:
 [LongestSubstringWithoutRepeatingCharacters.java](src/leetCode/LongestSubstringWithoutRepeatingCharacters.java)
 
-## [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
+## [#4 Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
+**Problem description**:
+
+There are two sorted arrays **nums1** and **nums2** of size m and n respectively.
+
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+
+**Example 1:**
+```
+nums1 = [1, 3]
+nums2 = [2]
+
+The median is 2.0
+```
+**Example 2:**
+```
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+The median is (2 + 3)/2 = 2.5
+```
+**Detail**:
+
+Time Complexity： O(n) n equal to longer length of nums1 and nums2
+```
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+	TreeMap<Double, Double> tree = new TreeMap<Double, Double>();
+	double median = 0.0;
+	int p = 0, q = 0;
+	int size = 0;
+
+	while (p < nums1.length || q < nums2.length) {
+		if (p < nums1.length) {
+			tree.put((double) size, (double) nums1[p]);
+			p++;
+			size++;
+		}
+		if (q < nums2.length) {
+			tree.put((double) size, (double) nums2[q]);
+			q++;
+			size++;
+		}
+	}
+
+	ArrayList<Double> list = new ArrayList<Double>(tree.values());
+	list.sort(new Comparator<Double>() {
+
+		public int compare(Double o1, Double o2) {
+			if (o1 < o2)
+				return 1;
+			else if (o1 > o2)
+				return -1;
+			else
+				return 0;
+		}
+
+	});
+	int n = size / 2;
+
+	if (size % 2 == 0)
+		median = (list.get(n - 1) + list.get(n)) / 2;
+	else
+		median = list.get(n);
+
+	return median;
+}
+```
+
+**Source code**:
+[MedianOfTwoSortedArrays.java](src/leetCode/MedianOfTwoSortedArrays.java)
+
+## [#7 Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
 **Problem description**:
 
 Reverse digits of an integer.
@@ -156,7 +228,7 @@ public int reverse(int x) {
 **Source code**:
 [ReverseInteger.java](src/leetCode/ReverseInteger.java)
 
-## [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
+## [#9 Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
 **Problem description**:
 
 Determine whether an integer is a palindrome. Do this without extra space.
@@ -184,7 +256,7 @@ public boolean isPalindrome(int x) {
 **Source code**:
 [PalindromeNumber.java](src/leetCode/PalindromeNumber.java)
 
-## [Roman To Integer](https://leetcode.com/problems/roman-to-integer/description/)
+## [#13 Roman To Integer](https://leetcode.com/problems/roman-to-integer/description/)
 **Problem description**:
 
 Given a roman numeral, convert it to an integer.
@@ -236,7 +308,7 @@ public int romanToInt(String s) {
 **Source code**:
 [RomanToInt.java](src/leetCode/RomanToInt.java)
 
-## [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
+## [#21 Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 **Problem description**:
 
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
@@ -274,7 +346,7 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 **Source code**:
 [MergeTwoSortedList.java](src/leetCode/MergeTwoSortedList.java)
 
-## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
+## [#26 Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 **Problem description**:
 
 Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
