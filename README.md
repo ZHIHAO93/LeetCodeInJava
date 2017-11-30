@@ -9,6 +9,7 @@
 * [#7 Reverse Integer](#7-reverse-integer)
 * [#9 Palindrome Number](#9-palindrome-number)
 * [#13 Roman To Integer](#13-roman-to-integer)
+* [#20 Valid Parentheses](#20-valid-parentheses)
 * [#21 Merge Two Sorted Lists](#21-merge-two-sorted-lists)
 * [#26 Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
 
@@ -21,7 +22,7 @@ You may assume that each input would have **exactly** one solution, and you may 
 
 **Detail**:
 
-Time Complexity： O(n!)
+Time Complexity锛� O(n!)
 ```
 public int[] twoSum(int[] nums, int target) {
 	int[] result = new int[2];
@@ -54,7 +55,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 **Detail**:
 
-Time Complexity： O(n) n equal to longer length of l1 and l2
+Time Complexity锛� O(n) n equal to longer length of l1 and l2
 ```
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 	ListNode tmp = new ListNode(0);
@@ -104,7 +105,7 @@ Given **"pwwkew"**, the answer is **"wke"**, with the length of 3. Note that the
 
 **Detail**:
 
-Time Complexity： O(n) n equal to length of String
+Time Complexity锛� O(n) n equal to length of String
 ```
 public int lengthOfLongestSubstring(String s) {
 	char[] arr = s.toCharArray();
@@ -151,7 +152,7 @@ The median is (2 + 3)/2 = 2.5
 ```
 **Detail**:
 
-Time Complexity： O(n) n equal to longer length of nums1 and nums2
+Time Complexity锛� O(n) n equal to longer length of nums1 and nums2
 ```
 public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 	TreeMap<Double, Double> tree = new TreeMap<Double, Double>();
@@ -210,7 +211,7 @@ Reverse digits of an integer.
 
 **Detail**:
 
-Time Complexity： O(n!)
+Time Complexity锛� O(n!)
 ```
 public int reverse(int x) {
 	long result = 0;
@@ -235,7 +236,7 @@ Determine whether an integer is a palindrome. Do this without extra space.
 
 **Detail**:
 
-Time Complexity： O(n/2)
+Time Complexity锛� O(n/2)
 ```
 public boolean isPalindrome(int x) {
 	if (x < 0)
@@ -265,7 +266,7 @@ Input is guaranteed to be within the range from 1 to 3999.
 
 **Detail**:
 
-Time Complexity： O(n)
+Time Complexity锛� O(n)
 ```
 public int romanToInt(String s) {
 	int length = s.length();
@@ -308,6 +309,44 @@ public int romanToInt(String s) {
 **Source code**:
 [RomanToInt.java](src/leetCode/RomanToInt.java)
 
+## [#20 Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
+**Problem description**:
+
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+
+**Detail**:
+
+```    
+public boolean isValid(String s) {
+	Stack<Character> stack = new Stack<Character>(); 
+	char c;
+	for(int i = 0; i < s.length(); i++) {
+		c = s.charAt(i);
+		if(c == '(' || c == '[' || c == '{') {
+			stack.push(c);
+		}
+		else if(c == ')' || c == ']' || c == '}') {
+			if(stack.isEmpty())
+				return false;
+			char n = stack.lastElement();
+			if(c - n <= 2 && c - n >= 0)
+				stack.pop();
+			else
+				return false;
+		}
+	}
+	if(stack.isEmpty())
+		return true;
+	else
+		return false;
+}
+```
+
+**Source code**:
+[MergeTwoSortedList.java](src/leetCode/ValidParentheses.java)
+
 ## [#21 Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 **Problem description**:
 
@@ -315,7 +354,7 @@ Merge two sorted linked lists and return it as a new list. The new list should b
 
 **Detail**:
 
-Time Complexity： O(n) n equal to the sum of the length of l1 and l2.
+Time Complexity锛� O(n) n equal to the sum of the length of l1 and l2.
 ```    
 public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 	ListNode tmp = new ListNode(0);
@@ -361,7 +400,7 @@ Your function should return length = 2, with the first two elements of nums bein
 
 **Detail**:
 
-Time Complexity： O(n)
+Time Complexity锛� O(n)
 ```    
 public int removeDuplicates(int[] nums) {
 	int j = 0;
